@@ -1,0 +1,197 @@
+1.相关command  
+  1).新建project(在目录下打开cmd)
+    npm install -g create-react-app（或：cnpm install -g create-react-app） 安装脚手架
+    create-react-app <project name>   创建项目
+    cd <project name>
+    npm start  运行项目
+    Ctrl+D 退出start模式
+  
+  2).引入其他组件 
+     npm install --save react-router-dom
+     npm install --save react-redux
+  
+2.react
+
+1.setState 
+setState(partialState, callback)
+1. partialState : object|function 用于产?与当前state合并的?集。
+2. callback : function state更新之后被调?。
+
+3.关于 setState() setState() 你应该了解三件事：
+1).不要直接修改 State,因为此代码不会重新渲染组件
+2).State 的更新可能是异步的，出于性能考虑，React 可能会把多个 setState() 调?合并成一个调?。
+   总结： setState只有在合成事件和生命周期函数中是异步的，在原生事件和setTimeout中都是同步
+   的，这里的异步其实是批量更新。
+3).如果想要链式更新state：
+   changeValue = v => {
+     this.setState(state => ({ counter: state.counter + v }));
+    };
+   setCounter = () => {
+     this.changeValue(1);
+     this.changeValue(2);
+};
+
+2.组件符合
+
+
+
+  
+3.react-router-Dome
+当应用逐渐庞大、复杂、组件也越来越多，这个时候需要有一种机制来管理和维护我们的应用和组件，使用 url 和组件进行关联对影视一个可行的有效的方式，路由
+a.安装.
+  npm i create-router-dom
+b.使用.
+  1).import {BrowserRouter,Switch,Route} from "react-router-dom";
+     该组件使用 HTML5 的 history API 来管理视图，使用的时候放置在顶层，BrowserRouter 的 children 是一个单节点
+     BrowserRouter 作为整个路由的入口
+
+  2).import {Link} from "react-router-dom";
+     <Link to="/">所有列表</Link> => 浏览器解析后：<a href="/">所有列表</a>
+     to：跳转的路径
+     replace:是否替换当前记录路径
+  3).import { Route } from "create-router-dom";
+     Route 组件是路由中最重要的一个组件，通过该组件可以把一个 URl 和一个组件进行绑定
+     a.不需要向子元素组件传递数据
+       <Route path="/add" component={Add}/>
+       1).Path:要渲染的URL，没有Path属性的时候将匹配任意路由
+       2).Component：要渲染的组件
+       3).exact: 精确匹配
+       4).strict： 严格匹配、考虑路径结尾的/
+
+     b.需要向子元素组件传递数据
+       <Route path="/" exact render={(e)=>{
+                    return(<Main
+                            data={data}
+                            isCheckAll = {props.isCheckAll}
+                            checkAll = {props.checkAll}
+                            setCheck = {props.setCheck}
+                            setLike = {props.setLike}
+                            remove = {props.remove}
+                          />)
+                }}/>
+
+     C.router Props 就是 render（e）里面的e
+       1).match: 当前匹配路由信息对象
+       2).location： location对象
+          e.location.pathname :储存当前路由地址
+       3).history： history对象 
+       4).staticContext          
+          e.history.push("/");  //跳转页面
+          e.history.goBack();   //返回上一个页面 
+
+  4).import { Redirect } from ‘create-router-dom’;
+     路由重定向/具有 link 组件基本属性
+     push：是否添加到 history中
+     from：跳转来源
+     可编程路由，render 函数返回对应组件
+     <Redirect to="/" />
+  
+  5).import { NavLink } from ‘create-router-dom’;
+     具有 link 组件的基本属性
+     activeClassName：激活状态下的 class 名称，字符串类型值
+     activeStyle：激活状态下的样式，对象类型值
+     isActive：是否为激活状态，函数类型值，返回 true or false
+  
+  6).import { Switch } from ‘create-router-dom’
+     把组件放在 Switch 组件中，当有路由匹配的时候结束后续匹配
+
+  7).import { withRouter } from ‘create-router-dom’
+     如果路由组件包含了其它子组件，那么可以给子组件使用withRouter,子组件就可以跨组件传递三个属性:history\match\location
+     接受一个组件作为参数
+
+  8）.Router 组件:
+      <BrowserRouter />
+      <HashRouter />
+      <MemoryRouter />
+      <NativeRouter />
+      <StaticRouter />
+    
+
+
+4.redux
+管理应用状态，提供可预测的状态管理；
+Redux 是一个独立的工具，并不是必须依赖 React，Vue等；
+1).相关URL。
+   妙味笔记地址：https://www.miaov.com/index.php/news/newsDetail/nid/292
+   redux状态管理：https://redux.js.org/
+                  http://www.redux.org.cn
+   
+2).Redux 使用说明
+我们把应用中需要用到的数据称为 state，随着应用的变化，数据将会变得复杂，为了能够对这种日趋复杂的数据进行有效的维护和管理，我们把 state 存储在一个 Object Tree 中，并且通过一个叫 store 的来管理这个 Object Tree
+a.安装 Redux：npm install redux.
+b.state：在Redux中，数据都是存放在 state 中.
+c.store：用来存放 state 的容器,通过createStore方法接收一个reducer生成。
+  c1).createStore：用来创建 store.
+  c2).action：定义对 state 的修改操作是一个对象，type是必须的，可以带一个参数.
+      actionCreator:生成action的函数
+       如：function addTodo（text）{
+             return {
+               type：add
+             }
+           }
+  c3).reducer：Store接收一个旧的action生成一个新的state的计算过程
+              是createStore 的参数即回调函数，用来处理数据的业务逻辑，修改和设置 state.
+              如：let store = Redux.createStore(function(state,action){
+                    return state;
+               })           
+  调用 createStore 时，会首次执行reducer，这时state并没有值，我们需要通过对 state设置初始值，并通过reducer的return，把state存入store中
+  c3).store 下的方法
+      c31).getState() 获取 store 中存放的 state
+      c32).dispatch(obj) 修改数据 View 发出Action的唯一方法
+           接受一个对象参数，该对象必须包含一个 type 属性， type 就是操作类型的说明  
+           我们把 dispatch 传入的参数称为 action
+           如：//操作类型 add
+              store.dispatch ({
+                 type:"add",
+                 value:''
+               })
+             //通过判断操作类型，操作数据
+              switch(action.type){
+                case 'add':
+                return [action.newValue,...users] 
+                break;
+               }
+
+3).redux 数据的管理和维护
+redux 中不建议我们直接对 state 进行修改，而是每次返回一个新的对象
+Object.assign() 把一个或多个源对象的可枚举属性值复制到目标对象中，返回值是我们的目标对象
+当 state 中有多个属性时我们可以对 reducer 的操作进行分拆
+combineReducers 合并拆分过后的 reducer
+
+
+5.react-redux.
+
+1).import {Provider} from "react-redux";
+   将redux store中的值传入react组件   
+   例子：<Provider store={store}>
+
+            <App />
+        </Provider>
+
+2).import {connect} from 'react-redux';
+   将映射后的状态和方法注入到组件的props上，组件中就可以通过this.props.xx拿到想要的状态和方法了。
+   connect(mapStateToProps,mapDispatcjToProps)(注入的组件)
+   mapStateToProps: redux状态和组件状态的映射
+   mapDispatchToProps：redux方法和组件方法的映射
+   例子：export default connect(state,props)(App)
+
+
+
+5.Todolist 案例
+https://www.miaov.com/index.php/news/newsDetail/nid/297
+
+
+
+
+
+
+
+
+问题总结：
+1.什么是yarn？
+2.为什么使用redux？
+在 React 中数据的交互是通过组件之间的通信来完成的，但是随着组件越来越多，业务逻辑越来越复杂，同时组件的嵌套也越来越复杂，数据的通信变得特别繁琐，把数据的管理和维护工作提取出来单独进行，就变得特别重要了
+ 
+  
+
+

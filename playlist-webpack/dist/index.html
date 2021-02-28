@@ -1,0 +1,153 @@
+Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module build failed: Error: Cannot find module 'babel-core'
+  
+  - loader.js:636 Function.Module._resolveFilename
+    internal/modules/cjs/loader.js:636:15
+  
+  - loader.js:562 Function.Module._load
+    internal/modules/cjs/loader.js:562:25
+  
+  - loader.js:690 Module.require
+    internal/modules/cjs/loader.js:690:17
+  
+  - helpers.js:25 require
+    internal/modules/cjs/helpers.js:25:18
+  
+  - index.js:3 Object.<anonymous>
+    [playlist-webpack]/[babel-loader]/lib/index.js:3:13
+  
+  - loader.js:776 Module._compile
+    internal/modules/cjs/loader.js:776:30
+  
+  - loader.js:787 Object.Module._extensions..js
+    internal/modules/cjs/loader.js:787:10
+  
+  - loader.js:653 Module.load
+    internal/modules/cjs/loader.js:653:32
+  
+  - loader.js:593 tryModuleLoad
+    internal/modules/cjs/loader.js:593:12
+  
+  - loader.js:585 Function.Module._load
+    internal/modules/cjs/loader.js:585:3
+  
+  - loader.js:690 Module.require
+    internal/modules/cjs/loader.js:690:17
+  
+  - helpers.js:25 require
+    internal/modules/cjs/helpers.js:25:18
+  
+  - loadLoader.js:18 loadLoader
+    [playlist-webpack]/[loader-runner]/lib/loadLoader.js:18:17
+  
+  - LoaderRunner.js:169 iteratePitchingLoaders
+    [playlist-webpack]/[loader-runner]/lib/LoaderRunner.js:169:2
+  
+  - LoaderRunner.js:365 runLoaders
+    [playlist-webpack]/[loader-runner]/lib/LoaderRunner.js:365:2
+  
+  - NormalModule.js:181 NormalModule.doBuild
+    [playlist-webpack]/[webpack]/lib/NormalModule.js:181:3
+  
+  - NormalModule.js:274 NormalModule.build
+    [playlist-webpack]/[webpack]/lib/NormalModule.js:274:15
+  
+  - Compilation.js:149 Compilation.buildModule
+    [playlist-webpack]/[webpack]/lib/Compilation.js:149:10
+  
+  - Compilation.js:337 factoryCallback
+    [playlist-webpack]/[webpack]/lib/Compilation.js:337:12
+  
+  - NormalModuleFactory.js:241 factory
+    [playlist-webpack]/[webpack]/lib/NormalModuleFactory.js:241:5
+  
+  - NormalModuleFactory.js:94 applyPluginsAsyncWaterfall
+    [playlist-webpack]/[webpack]/lib/NormalModuleFactory.js:94:13
+  
+  - Tapable.js:268 
+    [playlist-webpack]/[tapable]/lib/Tapable.js:268:11
+  
+  - CompatibilityPlugin.js:52 NormalModuleFactory.params.normalModuleFactory.plugin
+    [playlist-webpack]/[webpack]/lib/CompatibilityPlugin.js:52:5
+  
+  - Tapable.js:272 NormalModuleFactory.applyPluginsAsyncWaterfall
+    [playlist-webpack]/[tapable]/lib/Tapable.js:272:13
+  
+  - NormalModuleFactory.js:69 resolver
+    [playlist-webpack]/[webpack]/lib/NormalModuleFactory.js:69:10
+  
+  - NormalModuleFactory.js:194 process.nextTick
+    [playlist-webpack]/[webpack]/lib/NormalModuleFactory.js:194:7
+  
+  
+  - Error: Cannot find module 'babel-core'
+  
+  - compiler.js:76 
+    [playlist-webpack]/[html-webpack-plugin]/lib/compiler.js:76:16
+  
+  - Compiler.js:304 compile
+    [playlist-webpack]/[webpack]/lib/Compiler.js:304:11
+  
+  - Compiler.js:520 applyPluginsAsync.err
+    [playlist-webpack]/[webpack]/lib/Compiler.js:520:14
+  
+  - Tapable.js:202 next
+    [playlist-webpack]/[tapable]/lib/Tapable.js:202:11
+  
+  - CachePlugin.js:62 Compiler.<anonymous>
+    [playlist-webpack]/[webpack]/lib/CachePlugin.js:62:5
+  
+  - Tapable.js:206 Compiler.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:206:13
+  
+  - Compiler.js:517 compilation.seal.err
+    [playlist-webpack]/[webpack]/lib/Compiler.js:517:11
+  
+  - Tapable.js:195 Compilation.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:195:46
+  
+  - Compilation.js:671 self.applyPluginsAsync.err
+    [playlist-webpack]/[webpack]/lib/Compilation.js:671:19
+  
+  - Tapable.js:195 Compilation.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:195:46
+  
+  - Compilation.js:662 self.applyPluginsAsync.err
+    [playlist-webpack]/[webpack]/lib/Compilation.js:662:11
+  
+  - Tapable.js:195 Compilation.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:195:46
+  
+  - Compilation.js:657 self.applyPluginsAsync.err
+    [playlist-webpack]/[webpack]/lib/Compilation.js:657:10
+  
+  - Tapable.js:195 Compilation.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:195:46
+  
+  - Compilation.js:653 sealPart2
+    [playlist-webpack]/[webpack]/lib/Compilation.js:653:9
+  
+  - Tapable.js:195 Compilation.applyPluginsAsyncSeries
+    [playlist-webpack]/[tapable]/lib/Tapable.js:195:46
+  
+  - Compilation.js:596 Compilation.seal
+    [playlist-webpack]/[webpack]/lib/Compilation.js:596:8
+  
+  - Compiler.js:514 applyPluginsParallel.err
+    [playlist-webpack]/[webpack]/lib/Compiler.js:514:17
+  
+  - Tapable.js:289 
+    [playlist-webpack]/[tapable]/lib/Tapable.js:289:11
+  
+  - Compilation.js:498 _addModuleChain
+    [playlist-webpack]/[webpack]/lib/Compilation.js:498:11
+  
+  - Compilation.js:468 processModuleDependencies.err
+    [playlist-webpack]/[webpack]/lib/Compilation.js:468:14
+  
+  - next_tick.js:61 process._tickCallback
+    internal/process/next_tick.js:61:11
+  
+</pre><script type="text/javascript" src="js/index.js"></script>
